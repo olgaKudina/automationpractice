@@ -1,10 +1,10 @@
 package pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage{
+
     public static final String BASE_URL = "http://automationpractice.com/";
     public static final String LOGIN_EMAIL = "tms_qa05_6+1@mailinator.com";
     public static final String LOGIN_PASSWORD = "12345";
@@ -14,7 +14,6 @@ public class LoginPage extends BasePage{
     public static final By SUBMIT_LOGIN_BUTTON = By.xpath("//*[@id='SubmitLogin']");
     public static final By LOGOUT_BUTTON = By.xpath("//*[@class='logout']");
     public static final By LOGIN_WARNING = By.xpath("//*[@class='alert alert-danger']");
-
 
     public LoginPage(WebDriver driver) {
         super(driver);

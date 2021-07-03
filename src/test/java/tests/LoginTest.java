@@ -1,15 +1,16 @@
 package tests;
-
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest{
+
     @Test
     public void loginTest(){
         loginPage.login();
         Assert.assertTrue(myAccountPage.getMyAccountNavigatePage());
     }
+
     @Test
     public void logoutTest(){
         loginPage.login();
@@ -17,6 +18,7 @@ public class LoginTest extends BaseTest{
         loginPage.logout();
         Assert.assertTrue(myAccountPage.getAuthenticationNavigatePage());
     }
+
     @Test
     public void loginWithoutTest(){
         loginPage.loginIncorrectPassword("123");
