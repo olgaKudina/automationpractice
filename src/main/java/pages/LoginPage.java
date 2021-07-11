@@ -1,13 +1,12 @@
 package pages;
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage extends BasePage{
+@Log4j2
+public class LoginPage extends HeaderPage{
 
-    public static final String BASE_URL = "http://automationpractice.com/";
-    public static final String LOGIN_EMAIL = "tms_qa05_6+1@mailinator.com";
-    public static final String LOGIN_PASSWORD = "12345";
     public static final By SIGNUP_BUTTON_XPATH = By.xpath("//*[@class='login']");
     public static final By LOGIN_EMAIL_XPATH = By.xpath("//*[@id='email']");
     public static final By LOGIN_PASSWORD_XPATH = By.xpath("//*[@id='passwd']");
@@ -18,28 +17,40 @@ public class LoginPage extends BasePage{
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-    public MyAccountPage login(){
-        driver.get(BASE_URL);
+
+    @Step("Login with {email} and {password}")
+    public MyAccountPage login(String email, String password){
         driver.findElement(SIGNUP_BUTTON_XPATH).click();
-        WebDriverWait wait = new WebDriverWait(driver, 1);
-        driver.findElement(LOGIN_EMAIL_XPATH).sendKeys(LOGIN_EMAIL);
-        driver.findElement(LOGIN_PASSWORD_XPATH).sendKeys(LOGIN_PASSWORD);
+        log.info(String.format("Fill in username: '%s' in Login field.", email));
+        driver.findElement(LOGIN_EMAIL_XPATH).sendKeys(email);
+        log.info(String.format("Fill in username: '%s' in Login field.", password));
+        driver.findElement(LOGIN_PASSWORD_XPATH).sendKeys(password);
         driver.findElement(SUBMIT_LOGIN_BUTTON).click();
         return new MyAccountPage(driver);
     }
 
-    public ProductsPage logout(){
-        driver.findElement(LOGOUT_BUTTON).click();
-        return new ProductsPage(driver);
+    @Step("Open page {url}")
+    public LoginPage openPage(){
+        driver.get(BASE_URL);
+        return this;
     }
 
-    public void loginIncorrectPassword(String password){
+    @Step("Logout")
+    public HomePage logout(){
+        driver.findElement(LOGOUT_BUTTON).click();
+        return new HomePage(driver);
+    }
+
+    @Step("Login with incorrect password")
+    public void loginIncorrectPassword(String email, String incorrectPassword){
         driver.get(BASE_URL);
         driver.findElement(SIGNUP_BUTTON_XPATH).click();
-        driver.findElement(LOGIN_EMAIL_XPATH).sendKeys(LOGIN_EMAIL);
-        driver.findElement(LOGIN_PASSWORD_XPATH).sendKeys(password);
+        driver.findElement(LOGIN_EMAIL_XPATH).sendKeys(email);
+        driver.findElement(LOGIN_PASSWORD_XPATH).sendKeys(incorrectPassword);
         driver.findElement(SUBMIT_LOGIN_BUTTON).click();
     }
+
+    @Step("Get Warning if Password is incorrect")
     public String getWarningIncorrectPassword(){
         return driver.findElement(LOGIN_WARNING).getText();
     }

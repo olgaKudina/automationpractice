@@ -1,8 +1,12 @@
 package pages;
+
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class MyAccountPage extends BasePage{
+@Log4j2
+public class MyAccountPage extends BasePage {
     public static final By MY_ACCOUNT_NAVIGATE_PAGE = By.xpath("//span[contains(text(),'My account')]");
     public static final By AUTHENTICATION_NAVIGATE_PAGE = By.xpath("//*[contains(text(),'Authentication')]");
 
@@ -10,10 +14,13 @@ public class MyAccountPage extends BasePage{
         super(driver);
     }
 
-    public boolean getMyAccountNavigatePage(){
+    @Step("Get to my Account Navigate Page")
+    public boolean isMyAccountNavigatePageDisplayed() {
         return driver.findElement(MY_ACCOUNT_NAVIGATE_PAGE).isDisplayed();
     }
-    public boolean getAuthenticationNavigatePage(){
+
+    @Step("Get to Authentication Navigate Page")
+    public boolean isAuthenticationNavigatePageDisplayed() {
         return driver.findElement(AUTHENTICATION_NAVIGATE_PAGE).isDisplayed();
     }
 }
