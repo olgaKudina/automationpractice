@@ -17,6 +17,7 @@ public class BaseTest {
     LoginPage loginPage;
     MyAccountPage myAccountPage;
     HomePage homePage;
+    HeaderPage headerPage;
     SearchResultPage searchResultPage;
     ProductDetailsPage productDetailsPage;
     ProductAddedToCartModulePage productAddedToCartModulePage;
@@ -52,6 +53,7 @@ public class BaseTest {
         homeSteps = new HomeSteps(driver);
         addProductsToCartSteps = new AddProductsToCartSteps(driver);
         purchaseSteps = new PurchaseSteps(driver);
+        headerPage = new HeaderPage(driver);
 
     }
 

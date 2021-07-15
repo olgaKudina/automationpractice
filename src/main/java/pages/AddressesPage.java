@@ -4,15 +4,14 @@ import org.openqa.selenium.WebDriver;
 
 public class AddressesPage extends HeaderPage {
 
-    public static final By CONFIRM_LOGIN_INFO_BUTTON = By.xpath("//*[contains(@name,'processAddress')]");
+    public static final By PROCEED_TO_CHECKOUT_BUTTON_XPATH = By.xpath("//*[contains(@name,'processAddress')]");
 
     public AddressesPage(WebDriver driver) {
         super(driver);
     }
 
-    public ShippingPage confirmLoginInfo() {
-        driver.findElement(CONFIRM_LOGIN_INFO_BUTTON).isDisplayed();
-        driver.findElement(CONFIRM_LOGIN_INFO_BUTTON).click();
+    public ShippingPage clickProceedToCheckoutButtonOnAddressPage() {
+        driver.findElement(PROCEED_TO_CHECKOUT_BUTTON_XPATH).click();
         return new ShippingPage(driver);
     }
 }

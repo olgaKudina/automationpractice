@@ -31,7 +31,7 @@ public class PurchaseSteps {
         homePage.addProductToCart(productName)
                 .confirmProductAddedToCart()
                 .confirmSummaryInfo()
-                .confirmLoginInfo()
+                .clickProceedToCheckoutButtonOnAddressPage()
                 .confirmAgreement()
                 .choosePaymentMethod()
                 .confirmOrderSummary()

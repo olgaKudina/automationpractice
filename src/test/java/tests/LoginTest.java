@@ -15,7 +15,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void logoutTest() {
         homeSteps.openHomePageAndLogin(System.getenv().getOrDefault("email", PropertyReader.getProperty("email")), System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
-        loginPage.logout();
+        headerPage.logout();
         Assert.assertTrue(myAccountPage.isAuthenticationNavigatePageDisplayed());
     }
 

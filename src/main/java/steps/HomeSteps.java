@@ -14,15 +14,15 @@ public class HomeSteps {
     }
 
     public HomeSteps openHomePageAndLogin(String email, String password) {
-        loginPage.openPage()
-                .login(System.getProperty("email", email), System.getProperty("password", password));
+        homePage.openPage();
+        loginPage.login(System.getProperty("email", email), System.getProperty("password", password));
         return this;
     }
 
     public HomeSteps openHomePageLoginAndReturnToHomePage(String email, String password) {
-        loginPage.openPage()
-                .login(System.getProperty("email", email), System.getProperty("password", password));
-        loginPage.openPage();
+        homePage.openPage();
+        loginPage.login(System.getProperty("email", email), System.getProperty("password", password));
+        homePage.openPage();
         return this;
     }
 }
