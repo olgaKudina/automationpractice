@@ -14,12 +14,12 @@ public class MyAccountPage extends BasePage {
         super(driver);
     }
 
-    @Step("Get to my Account Navigate Page")
+    @Step("Verify my Account Navigate Page is displayed after successful Login")
     public boolean isMyAccountNavigatePageDisplayed() {
         return driver.findElement(MY_ACCOUNT_NAVIGATE_PAGE).isDisplayed();
     }
 
-    @Step("Get to Authentication Navigate Page")
+    @Step("Verify Authentication Navigate Page is displayed after Logout")
     public boolean isAuthenticationNavigatePageDisplayed() {
         return driver.findElement(AUTHENTICATION_NAVIGATE_PAGE).isDisplayed();
     }

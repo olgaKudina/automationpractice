@@ -23,7 +23,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    @Step("Get to Page with Product {productName} details")
+    @Step("Click 'More' button to get to Page with Product {productName} details")
     public ProductDetailsPage clickOnProductItem(String productName) {
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(By.xpath(String.format(PRODUCT_XPATH, productName)))).build().perform();

@@ -15,10 +15,10 @@ public class ProductAddedToCartModulePage extends BasePage {
         super(driver);
     }
 
-    @Step("Confirm that Product was added to Cart")
+    @Step("Click 'Proceed to checkout' on Summary page to confirm that Product was added to Cart")
     public ShoppingCartSummaryPage confirmProductAddedToCart() {
         WaitForElement.waitForElementPresence(driver, CONFIRMATION_ADD_TO_CART_BUTTON, 30);
-        log.info("Confirm that Product was added to Cart");
+        log.info("Click 'Proceed to checkout' on Summary page");
         driver.findElement(CONFIRMATION_ADD_TO_CART_BUTTON).click();
         return new ShoppingCartSummaryPage(driver);
     }

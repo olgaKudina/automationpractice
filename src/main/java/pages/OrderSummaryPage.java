@@ -15,10 +15,10 @@ public class OrderSummaryPage extends HeaderPage {
         super(driver);
     }
 
-    @Step("Confirm Order Summary")
+    @Step("Confirm Order Summary by clicking 'I confirm my Order'")
     public OrderConfirmationPage confirmOrderSummary() {
         WaitForElement.waitForElementPresence(driver, CONFIRM_MY_MODULE_BUTTON, 30);
-        log.info("Confirm Order Summary");
+        log.info("Click 'I confirm my Order' button");
         driver.findElement(CONFIRM_MY_MODULE_BUTTON).click();
         return new OrderConfirmationPage(driver);
     }

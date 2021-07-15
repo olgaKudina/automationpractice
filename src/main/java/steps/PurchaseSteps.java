@@ -35,7 +35,7 @@ public class PurchaseSteps {
                 .confirmAgreement()
                 .choosePaymentMethod()
                 .confirmOrderSummary()
-                .finishPurchase();
+                .getConfirmationText();
         return this;
     }
 }

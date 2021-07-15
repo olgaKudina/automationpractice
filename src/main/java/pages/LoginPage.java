@@ -22,7 +22,7 @@ public class LoginPage extends HeaderPage{
         driver.findElement(SIGNUP_BUTTON_XPATH).click();
         log.info(String.format("Fill in username: '%s' in Login field.", email));
         driver.findElement(LOGIN_EMAIL_XPATH).sendKeys(email);
-        log.info(String.format("Fill in username: '%s' in Login field.", password));
+        log.info(String.format("Fill in password: '%s' in Login field.", password));
         driver.findElement(LOGIN_PASSWORD_XPATH).sendKeys(password);
         driver.findElement(SUBMIT_LOGIN_BUTTON).click();
         return new MyAccountPage(driver);
@@ -33,12 +33,13 @@ public class LoginPage extends HeaderPage{
         driver.get(BASE_URL);
         driver.findElement(SIGNUP_BUTTON_XPATH).click();
         driver.findElement(LOGIN_EMAIL_XPATH).sendKeys(email);
+        log.info(String.format("Fill in password: '%s' in Login field.", incorrectPassword));
         driver.findElement(LOGIN_PASSWORD_XPATH).sendKeys(incorrectPassword);
         driver.findElement(SUBMIT_LOGIN_BUTTON).click();
         return this;
     }
 
-    @Step("Get Warning if Password is incorrect")
+    @Step("Warning message is displayed if Password is incorrect")
     public String getWarningIncorrectPassword(){
         return driver.findElement(LOGIN_WARNING).getText();
     }

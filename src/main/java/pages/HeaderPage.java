@@ -18,7 +18,7 @@ public class HeaderPage extends BasePage {
 
     @Step("Enter search {searchProductName} product and apply search")
     public SearchResultPage search(String searchProductName) {
-        log.info("Enter search input");
+        log.info("Enter search input ", searchProductName);
         driver.findElement(SEARCH_XPATH).sendKeys(searchProductName);
         driver.findElement(SEARCH_BUTTON).click();
         return new SearchResultPage(driver);
@@ -26,12 +26,13 @@ public class HeaderPage extends BasePage {
 
     @Step("Search result is displayed")
     public boolean getSearchResult() {
-        log.info("Search result is displayed");
+        log.info("Verify that Search result is displayed");
         return driver.findElement(SEARCH_RESULT).isDisplayed();
     }
 
     @Step("Logout")
     public HomePage logout(){
+        log.info("Click on Logout button");
         driver.findElement(LOGOUT_BUTTON).click();
         return new HomePage(driver);
     }

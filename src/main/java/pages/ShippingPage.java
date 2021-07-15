@@ -16,11 +16,12 @@ public class ShippingPage extends HeaderPage {
         super(driver);
     }
 
-    @Step("Confirm Agreement on Purchase")
+    @Step("Choose Payment method and confirm Agreement on Purchase")
     public PaymentMethodPage confirmAgreement() {
         WaitForElement.waitForElementPresence(driver, CHECKBOX, 30);
+        log.info("Click on checkbox");
         driver.findElement(CHECKBOX).click();
-        log.info("Confirm Agreement on Purchase");
+        log.info("Click 'Pay by bank wire' button");
         driver.findElement(CONFIRM_AGREEMENT_BUTTON).click();
         return new PaymentMethodPage(driver);
     }

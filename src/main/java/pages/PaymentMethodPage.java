@@ -15,10 +15,10 @@ public class PaymentMethodPage extends HeaderPage {
         super(driver);
     }
 
-    @Step("Choose Payment Method")
+    @Step("Choose payment method: Click 'Pay by bank wire' button")
     public OrderSummaryPage choosePaymentMethod() {
         WaitForElement.waitForElementPresence(driver, PAYMENT_MODULE_BUTTON, 30);
-        log.info("Choose Payment Method");
+        log.info("Click 'Pay by bank wire' button");
         driver.findElement(PAYMENT_MODULE_BUTTON).click();
         return new OrderSummaryPage(driver);
     }

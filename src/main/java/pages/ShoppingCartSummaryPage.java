@@ -18,16 +18,16 @@ public class ShoppingCartSummaryPage extends HeaderPage {
         super(driver);
     }
 
-    @Step("Confirm that Summary Info is correct")
+    @Step("Confirm that Summary Information is correct by clicking 'Proceed to checkout'")
     public AddressesPage confirmSummaryInfo() {
         WaitForElement.waitForElementPresence(driver, CONFIRMATION_SUMMARY_BUTTON, 30);
         driver.findElement(CONFIRMATION_SUMMARY_BUTTON).isDisplayed();
-        log.info("Confirm that Summary Info is correct");
+        log.info("Click 'Proceed to checkout' button to confirm that Summary Info is correct");
         driver.findElement(CONFIRMATION_SUMMARY_BUTTON).click();
         return new AddressesPage(driver);
     }
 
-    @Step("Remove Product from Cart")
+    @Step("Click on Trash button and remove Product from Cart")
     public ShoppingCartSummaryPage removeProductFromCart() {
         WaitForElement.waitForElementPresence(driver, ICON_TRASH_XPATH, 50);
         log.info("Click on Trash button and remove Product from Cart");
@@ -35,10 +35,10 @@ public class ShoppingCartSummaryPage extends HeaderPage {
         return this;
     }
 
-    @Step("Get Confirmation that Product was removed from Cart")
+    @Step("Get Confirmation text that Product was removed from Cart")
     public String confirmRemovalProductFromCart() {
         WaitForElement.waitForElementPresence(driver, REMOVAL_PRODUCT_CONFIRMATION_TEXT, 50);
-        log.info("Get Confirmation that Product was removed from Cart");
+        log.info("Confirmation text that Product was removed from Cart is displayed");
         String removalConfirmationText = driver.findElement(REMOVAL_PRODUCT_CONFIRMATION_TEXT).getText();
         return removalConfirmationText;
     }
