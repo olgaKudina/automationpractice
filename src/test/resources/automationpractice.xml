@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="automationpractice Test Suite" parallel="tests" >
+    <test name="Tests">
+        <classes>
+            <class name="tests.ProductsTest" />
+            <class name="tests.PurchaseTest" />
+            <class name="tests.LoginTest" />
+            <class name="tests.SigninTest" />
+        </classes>
+    </test>
+</suite>

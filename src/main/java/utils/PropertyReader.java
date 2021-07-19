@@ -54,22 +54,3 @@ public class PropertyReader {
         return loadProperties().getProperty(propertyName);
     }
 }
-
-//public class PropertyReader {
-//
-//    private static final String PROPERTY_PATH = "config.properties";
-//
-//    private PropertyReader() {
-//    }
-//
-//    public static String getProperty(String name) {
-//        try (FileInputStream fis = new FileInputStream(PROPERTY_PATH)) {
-//            Properties property = new Properties();
-//            property.load(fis);
-//            return property.getProperty(name);
-//        } catch (Exception error) {
-//            // TODO Logger logic
-//        }
-//        return null;
-//    }
-//}

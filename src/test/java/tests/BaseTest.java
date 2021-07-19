@@ -3,7 +3,6 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 import steps.AddProductsToCartSteps;
@@ -30,6 +29,8 @@ public class BaseTest {
     HomeSteps homeSteps;
     AddProductsToCartSteps addProductsToCartSteps;
     PurchaseSteps purchaseSteps;
+    CatalogPage catalogPage;
+    CreateAccountPage createAccountPage;
 
 
     @BeforeMethod
@@ -54,11 +55,13 @@ public class BaseTest {
         addProductsToCartSteps = new AddProductsToCartSteps(driver);
         purchaseSteps = new PurchaseSteps(driver);
         headerPage = new HeaderPage(driver);
+        catalogPage = new CatalogPage(driver);
+        createAccountPage = new CreateAccountPage(driver);
 
     }
 
-    @AfterMethod
-    public void endTest() {
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void endTest() {
+//        driver.quit();
+//    }
 }

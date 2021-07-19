@@ -30,7 +30,7 @@ public class HeaderPage extends BasePage {
         return driver.findElement(SEARCH_RESULT).isDisplayed();
     }
 
-    @Step("Logout")
+    @Step("Click Logout")
     public HomePage logout(){
         log.info("Click on Logout button");
         driver.findElement(LOGOUT_BUTTON).click();

@@ -3,6 +3,7 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.EmailGenerator;
 
 @Log4j2
 public class LoginPage extends HeaderPage{
@@ -12,6 +13,8 @@ public class LoginPage extends HeaderPage{
     public static final By LOGIN_PASSWORD_XPATH = By.xpath("//*[@id='passwd']");
     public static final By SUBMIT_LOGIN_BUTTON = By.xpath("//*[@id='SubmitLogin']");
     public static final By LOGIN_WARNING = By.xpath("//*[@class='alert alert-danger']");
+    public static final By EMAIL_ADDRESS_SIGNIN_XPATH = By.xpath("//*[@id='email_create']");
+    public static final By CREATE_ACCOUNT_BUTTON = By.xpath("//*[@id='SubmitCreate']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -42,6 +45,16 @@ public class LoginPage extends HeaderPage{
     @Step("Warning message is displayed if Password is incorrect")
     public String getWarningIncorrectPassword(){
         return driver.findElement(LOGIN_WARNING).getText();
+    }
+
+    @Step("Enter email address to create new account and click Submit button")
+    public CreateAccountPage enterEmailAddressToCreateNewAccount(){
+        driver.findElement(SIGNUP_BUTTON_XPATH).click();
+        log.info("Enter random email", EmailGenerator.getSaltString() + "@mail.net");
+        driver.findElement(EMAIL_ADDRESS_SIGNIN_XPATH).sendKeys(EmailGenerator.getSaltString() + "@mail.net");
+        log.info("Click 'Create an account' button");
+        driver.findElement(CREATE_ACCOUNT_BUTTON).click();
+        return new CreateAccountPage(driver);
     }
 }
 

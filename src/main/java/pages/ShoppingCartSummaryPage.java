@@ -12,6 +12,7 @@ public class ShoppingCartSummaryPage extends HeaderPage {
     public static final By CONFIRMATION_SUMMARY_BUTTON = By.xpath("//*[contains(@class,'standard-checkout')]");
     public static final By ICON_TRASH_XPATH = By.xpath("//*[@class='icon-trash']");
     public static final By REMOVAL_PRODUCT_CONFIRMATION_TEXT = By.xpath("//*[@class='alert alert-warning']");
+    public static final By PRODUCT_QUANTITY_XPATH = By.xpath("//*[@title='View my shopping cart']/descendant::*[contains(@class,'ajax_cart_quantity')]");
 
 
     public ShoppingCartSummaryPage(WebDriver driver) {
@@ -41,5 +42,12 @@ public class ShoppingCartSummaryPage extends HeaderPage {
         log.info("Confirmation text that Product was removed from Cart is displayed");
         String removalConfirmationText = driver.findElement(REMOVAL_PRODUCT_CONFIRMATION_TEXT).getText();
         return removalConfirmationText;
+    }
+
+    @Step("Get Product Quantity")
+    public String getProductQuantity(){
+        WaitForElement.waitForElementPresence(driver, PRODUCT_QUANTITY_XPATH, 50);
+        String numberOfProducts = driver.findElement(PRODUCT_QUANTITY_XPATH).getText();
+        return numberOfProducts;
     }
 }

@@ -12,6 +12,8 @@ public class HomePage extends BasePage {
     public static final String PRODUCT_XPATH = "//a[contains(text(),'%s')]";
     public static final String MORE_DETAILS_BUTTON = "//a[contains(text(),'%s')]/ancestor::*[contains(@class,'product-container')]//span[contains(text(),'More')]";
     public static final String ADD_TO_CART_BUTTON = "//a[contains(text(),'%s')]/ancestor::*[contains(@class,'product-container')]//span[contains(text(),'Add to cart')]";
+    public static final String PRODUCT_GROUP_XPATH = "//a[@title='%s']";
+    public static final String PRODUCT_ITEM_XPATH = "//a[@title='%s']";
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -39,6 +41,14 @@ public class HomePage extends BasePage {
         log.info("Click on 'Add to cart' button to add {productName} to Cart");
         driver.findElement(By.xpath(String.format(ADD_TO_CART_BUTTON, productName))).click();
         return new ProductAddedToCartModulePage(driver);
+    }
+
+    @Step("Select Product in Products Module and go to Calatog")
+    public CatalogPage selectProductItemAndGoToCatalog(String productGroupName, String productItem){
+        Actions action = new Actions(driver);
+        action.moveToElement(driver.findElement(By.xpath(String.format(PRODUCT_GROUP_XPATH, productGroupName)))).build().perform();
+        driver.findElement(By.xpath(String.format(PRODUCT_ITEM_XPATH, productItem))).click();
+        return new CatalogPage(driver);
     }
 }
 

@@ -27,4 +27,19 @@ public class ProductsTest extends BaseTest {
         shoppingCartSummaryPage.confirmRemovalProductFromCart();
         Assert.assertEquals(shoppingCartSummaryPage.confirmRemovalProductFromCart(), "Your shopping cart is empty.");
     }
+
+    @Test
+    public void addProductToCartAndCheckQuantity(){
+        homePage.openPage();
+        addProductsToCartSteps.addProduct("Faded Short Sleeve T-shirts");
+        shoppingCartSummaryPage.getProductQuantity();
+        Assert.assertEquals(shoppingCartSummaryPage.getProductQuantity(), "1");
+    }
+
+    @Test
+    public void goToCatalog(){
+        homePage.openPage();
+        homePage.selectProductItemAndGoToCatalog("Women", "Blouses");
+        Assert.assertEquals(catalogPage.confirmCatalogName(), "CATALOG");
+    }
 }
