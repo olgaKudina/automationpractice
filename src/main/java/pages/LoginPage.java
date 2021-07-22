@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.EmailGenerator;
+import utils.WaitForElement;
 
 @Log4j2
 public class LoginPage extends HeaderPage{
@@ -34,7 +35,9 @@ public class LoginPage extends HeaderPage{
     @Step("Login with incorrect password {incorrectPassword}")
     public LoginPage loginIncorrectPassword(String email, String incorrectPassword){
         driver.get(BASE_URL);
+        WaitForElement.waitForElementPresence(driver, SIGNUP_BUTTON_XPATH, 30);
         driver.findElement(SIGNUP_BUTTON_XPATH).click();
+        WaitForElement.waitForElementPresence(driver, LOGIN_EMAIL_XPATH, 30);
         driver.findElement(LOGIN_EMAIL_XPATH).sendKeys(email);
         log.info(String.format("Fill in password: '%s' in Login field.", incorrectPassword));
         driver.findElement(LOGIN_PASSWORD_XPATH).sendKeys(incorrectPassword);

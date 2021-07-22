@@ -17,8 +17,8 @@ public class WaitForElement {
         WebElement element = (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.visibilityOfElementLocated(selector));
         return element;
     }
-    public static WebElement waitForElementLocated(WebDriver driver, By selector, int waitInterval) {
-        WebElement element = (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.visibilityOf((WebElement) selector));
+    public static WebElement waitForElementLocated(WebDriver driver, String selector, int waitInterval, String parameter) {
+        WebElement element = (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(String.format(selector, parameter)))));
         return element;
     }
 }
