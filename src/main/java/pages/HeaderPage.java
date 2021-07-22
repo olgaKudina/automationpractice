@@ -4,13 +4,15 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.WaitForElement;
 
 @Log4j2
 public class HeaderPage extends BasePage {
+    public static final By SIGNUP_BUTTON_XPATH = By.xpath("//*[@class='login']");
     public static final By SEARCH_XPATH = By.xpath("//*[contains(@class,'search_query')]");
     public static final By SEARCH_BUTTON = By.xpath("//*[contains(@name,'submit_search')]");
-    public static final By SEARCH_RESULT = By.xpath("//*[contains(text(),'result has been found')]");
     public static final By LOGOUT_BUTTON = By.xpath("//*[@class='logout']");
+    public static final By USER_NAME = By.xpath("//*[@class='account']");
 
     public HeaderPage(WebDriver driver) {
         super(driver);
@@ -24,16 +26,21 @@ public class HeaderPage extends BasePage {
         return new SearchResultPage(driver);
     }
 
-    @Step("Search result is displayed")
-    public boolean getSearchResult() {
-        log.info("Verify that Search result is displayed");
-        return driver.findElement(SEARCH_RESULT).isDisplayed();
-    }
-
     @Step("Click Logout")
     public HomePage logout(){
         log.info("Click on Logout button");
         driver.findElement(LOGOUT_BUTTON).click();
         return new HomePage(driver);
+    }
+
+    @Step("Click Signin button")
+    public LoginPage clickSigninButton(){
+        driver.findElement(SIGNUP_BUTTON_XPATH).click();
+        return new LoginPage(driver);
+    }
+
+    public String getUserName(){
+       WaitForElement.waitForElementPresence(driver, USER_NAME, 30);
+       return driver.findElement(USER_NAME).getText();
     }
 }

@@ -33,7 +33,7 @@ public class PurchaseSteps {
                 .confirmSummaryInfo()
                 .clickProceedToCheckoutButtonOnAddressPage()
                 .confirmAgreement()
-                .choosePaymentMethod()
+                .chooseBankWirePaymentMethod()
                 .confirmOrderSummary()
                 .getConfirmationText();
         return this;

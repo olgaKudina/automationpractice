@@ -8,8 +8,9 @@ public class ProductsTest extends BaseTest {
     public void searchTest() {
         homePage.openPage();
         headerPage.search("Blouse");
-        headerPage.getSearchResult();
-        Assert.assertTrue(headerPage.getSearchResult());
+        searchResultPage.getSearchResult();
+        Assert.assertTrue(searchResultPage.getSearchResult());
+        Assert.assertEquals(searchResultPage.getSearchedItemName(), "\"BLOUSE\"");
     }
 
     @Test
@@ -37,9 +38,10 @@ public class ProductsTest extends BaseTest {
     }
 
     @Test
-    public void goToCatalog(){
+    public void searchThroughCatalog(){
         homePage.openPage();
         homePage.selectProductItemAndGoToCatalog("Women", "Blouses");
-        Assert.assertEquals(catalogPage.confirmCatalogName(), "CATALOG");
+        Assert.assertEquals(catalogPage.getCatalogTitleText(), "CATALOG");
+        Assert.assertEquals(catalogPage.getCatalogSearchItem(), "BLOUSES ");
     }
 }

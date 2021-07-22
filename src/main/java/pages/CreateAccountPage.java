@@ -57,7 +57,7 @@ public class CreateAccountPage extends HeaderPage{
         driver.findElement(REGISTER_BUTTON).click();
     }
 
-    public String getAccountCreatedConfirmation(){
+    public String getCreatedAccountConfirmationText(){
         String accountCreatedMessage = driver.findElement(By.xpath(NEW_ACCOUNT_CREATED_TEXT)).getText();
         return accountCreatedMessage;
     }

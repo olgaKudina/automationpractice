@@ -10,6 +10,7 @@ public class LoginTest extends BaseTest {
     public void loginTest() {
         homeSteps.openHomePageAndLogin(System.getenv().getOrDefault("email", PropertyReader.getProperty("email")), System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         Assert.assertTrue(myAccountPage.isMyAccountNavigatePageDisplayed());
+        Assert.assertEquals(loginPage.getUserName(), "Dave Cooper");
     }
 
     @Test
@@ -21,7 +22,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginWithIncorrectPasswordTest() {
-        loginPage.loginIncorrectPassword(System.getenv().getOrDefault("email", PropertyReader.getProperty("email")), System.getenv().getOrDefault("incorrectPassword", PropertyReader.getProperty("incorrectPassword")));
+        homeSteps.openHomePageAndLogin(System.getenv().getOrDefault("email", PropertyReader.getProperty("email")), System.getenv().getOrDefault("incorrectPassword", PropertyReader.getProperty("incorrectPassword")));
         Assert.assertEquals(loginPage.getWarningIncorrectPassword(), "There is 1 error\n" +
                 "Invalid password.");
     }
