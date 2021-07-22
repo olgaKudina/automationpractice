@@ -50,10 +50,9 @@ public class CreateAccountPage extends HeaderPage{
         WaitForElement.waitForElementLocated(driver, ADDRESS_INFORMATION_INPUT, 30,"alias");
         driver.findElement(By.xpath(String.format(ADDRESS_INFORMATION_INPUT, "alias"))).sendKeys(alias);
         log.info("Click on state dropdown");
-        WaitForElement.waitForElementLocated(driver, DROPDOWN_STATE, 30,"State");
         driver.findElement(By.xpath(String.format(DROPDOWN_STATE, "State"))).click();
         log.info("Choose state 'Alabama'");
-        WaitForElement.waitForElementLocated(driver, STATE_XPATH, 30,"Alabama");
+        WaitForElement.waitForElementLocated(driver, STATE_XPATH, 50,"Alabama");
         driver.findElement(By.xpath(String.format(STATE_XPATH, "Alabama"))).click();
         driver.findElement(REGISTER_BUTTON).click();
     }
