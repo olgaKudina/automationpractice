@@ -20,9 +20,14 @@ public class HomePage extends BasePage {
     }
 
     @Step("Open page {url}")
-    public HomePage openPage(){
-        driver.get(BASE_URL);
-        return this;
+    public HomePage openPage() {
+        try {
+            driver.get(BASE_URL);
+            return this;
+        } catch (Exception e) {
+            System.out.println("Site is unavailable");
+            return this;
+        }
     }
 
     @Step("Click 'More' button to get to Page with Product {productName} details")
@@ -43,7 +48,7 @@ public class HomePage extends BasePage {
         return new ProductAddedToCartModulePage(driver);
     }
 
-    @Step("Select Product in Products Module and go to Calatog")
+    @Step("Select Product in Products Module and go to Catalog")
     public CatalogPage selectProductItemAndGoToCatalog(String productGroupName, String productItem){
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(By.xpath(String.format(PRODUCT_GROUP_XPATH, productGroupName)))).build().perform();

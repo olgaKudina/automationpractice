@@ -23,7 +23,7 @@ public class CreateAccountPage extends HeaderPage{
     }
 
     @Step("Fill in Registration form to create new account")
-    public void fillInAccountForm(String firstName, String  lastName, String password, String address1, String city, String phone, String postcode, String alias){
+    public void fillInAccountForm(String firstName, String  lastName, String password, String address1, String city, String phone, String postcode, String alias, String stateName){
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         log.info("Enter First name {firstName}");
         WaitForElement.waitForElementLocated(driver, PERSONAL_INFORMATION_INPUT, 30,"First name");
@@ -53,7 +53,7 @@ public class CreateAccountPage extends HeaderPage{
         driver.findElement(By.xpath(String.format(DROPDOWN_STATE, "State"))).click();
         log.info("Choose state 'Alabama'");
         WaitForElement.waitForElementLocated(driver, STATE_XPATH, 50,"Alabama");
-        driver.findElement(By.xpath(String.format(STATE_XPATH, "Alabama"))).click();
+        driver.findElement(By.xpath(String.format(STATE_XPATH, stateName))).click();
         driver.findElement(REGISTER_BUTTON).click();
     }
 
